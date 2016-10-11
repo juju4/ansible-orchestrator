@@ -1,0 +1,11 @@
+---
+
+- name: yum | orchestrator tools
+  yum: name={{item}} state=present update_cache=yes
+  with_items: "{{ orchestrator_pkg }}"
+
+- name: Download vagrant
+  get_url: "url={{ orchestrator_vagrant_url_rpm }} dest={{ install_archives }}/{{ orchestrator_vagrant_url_rpm | basename }}"
+- name: Install vagrant
+  yum: "name={{ install_archives }}/{{ orchestrator_vagrant_url_rpm | basename }}"
+

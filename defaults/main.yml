@@ -1,0 +1,22 @@
+---
+
+install_archives: /var/_install
+
+orchestrator_pip:
+  - ansigenome
+
+orchestrator_vagrant_url_deb: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
+orchestrator_vagrant_url_rpm: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.rpm
+orchestrator_vagrant_plugins:
+  - vagrant-winrm
+  - vagrant-scp
+  - vagrant-digitalocean
+  - vagrant-aws
+  - vagrant-vsphere
+
+## ansible roles to replicate
+#orchestrator_galaxy_roles:
+#  - { n: 'name', p: '/etc/ansible/roles/name' }
+#orchestrator_github_roles:
+#  - { url: 'https://github.com/geerlingguy/ansible-role-java', p: '/etc/ansible/roles/geerlingguy.java' }
+

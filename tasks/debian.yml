@@ -1,0 +1,18 @@
+---
+- name: Debian | add software-properties-common
+  apt: name={{item}} state=present update_cache=yes
+  with_items:
+    - software-properties-common
+
+- name: Debian | add ansible repository for latest releases
+  apt_repository: repo='ppa:ansible/ansible'
+
+- name: Debian | orchestrator tools
+  apt: name={{item}} state=present update_cache=yes
+  with_items: "{{ orchestrator_pkg }}"
+
+- name: Download vagrant
+  get_url: "url={{ orchestrator_vagrant_url_deb }} dest={{ install_archives }}/{{ orchestrator_vagrant_url_deb | basename }}"
+- name: Install vagrant
+  apt: "deb={{ install_archives }}/{{ orchestrator_vagrant_url_deb | basename }}"
+

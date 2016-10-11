@@ -1,0 +1,7 @@
+---
+
+orchestrator_pkg:
+    - git
+    - ansible
+    - gcc
+    - make

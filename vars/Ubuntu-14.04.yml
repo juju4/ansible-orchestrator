@@ -1,0 +1,9 @@
+---
+
+orchestrator_pkg:
+    - git
+    - ansible
+    - ruby2.0-dev
+    - zlib1g-dev
+    - patch
+    - make
