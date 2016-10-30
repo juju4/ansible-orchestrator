@@ -23,6 +23,11 @@
   when: orchestrator_pip is defined and orchestrator_pip != []
 
 - block:
+    - name: ensure ruby is installed
+      package: name={{ item }} state=present
+      with_items:
+        - ruby
+        - ruby-dev
     - name: install orchestrator gem modules
       gem: name={{ item }} state=present
       with_items: "{{ orchestrator_gem }}"
