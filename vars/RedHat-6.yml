@@ -1,7 +1,13 @@
 ---
 
 orchestrator_pkg:
-    - git
-    - ansible
-    - gcc
-    - make
+  - git
+  - ansible
+  - gcc
+  - make
+
+ruby_pkg:
+  - ruby
+  - rubygems
+  - ruby-devel
+

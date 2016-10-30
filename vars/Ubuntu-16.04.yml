@@ -1,11 +1,16 @@
 ---
 
 orchestrator_pkg:
-    - git
-    - ansible
-    - ruby2.3-dev
-    - zlib1g-dev
-    - patch
-    - make
-    - libssl-dev
-    - libffi-dev
+  - git
+  - ansible
+  - ruby2.3-dev
+  - zlib1g-dev
+  - patch
+  - make
+  - libssl-dev
+  - libffi-dev
+
+ruby_pkg: 
+  - ruby2.3
+  - ruby2.3-dev
+
