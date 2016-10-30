@@ -7,3 +7,5 @@ orchestrator_pkg:
     - zlib1g-dev
     - patch
     - make
+    - libssl-dev
+    - libffi-dev

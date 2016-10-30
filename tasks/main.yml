@@ -16,29 +16,39 @@
 - include: redhat.yml
   when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
-- name: install orchestrator pip modules
-  pip: name={{ item }} state=present
-  with_items: "{{ orchestrator_pip }}"
-
-- name: check existing vagrant plugins
-  command: "vagrant plugin list"
-  register: plugins
-  changed_when: false
 - block:
-    - name: install vagrant plugins
-      command: "vagrant plugin install {{ item }}"
-      with_items: "{{ orchestrator_vagrant_plugins }}"
-  when: plugins.stdout.find("digitalocean") == -1
+    - name: install orchestrator pip modules
+      pip: name={{ item }} state=present
+      with_items: "{{ orchestrator_pip }}"
+  when: orchestrator_pip is defined and orchestrator_pip != []
+
+- block:
+    - name: install orchestrator gem modules
+      gem: name={{ item }} state=present
+      with_items: "{{ orchestrator_gem }}"
+  when: orchestrator_gem is defined and orchestrator_gem != []
+
+- block:
+    - name: check existing vagrant plugins
+      command: "vagrant plugin list"
+      register: plugins
+      changed_when: false
+    - block:
+        - name: install vagrant plugins
+          command: "vagrant plugin install {{ item }}"
+          with_items: "{{ orchestrator_vagrant_plugins }}"
+      when: plugins.stdout.find("digitalocean") == -1
+  when: orchestrator_vagrant is defined and orchestrator_vagrant
 
 - block:
     - name: recover github ansible roles
       git: repo={{ item.url }} dest={{ item.p }}
       with_items: "{{ orchestrator_github_roles }}"
-  when: github_roles is defined and github_roles != []
+  when: orchestrator_github_roles is defined and orchestrator_github_roles != []
 
 - block:
     - name: recover galaxy ansible roles
       command: "ansible-galaxy install {{ item.n }} -p {{ item.p }}"
       with_items: "{{ orchestrator_galaxy_roles }}"
-  when: galaxy_roles is defined and galaxy_roles != []
+  when: orchestrator_galaxy_roles is defined and orchestrator_galaxy_roles != []
 

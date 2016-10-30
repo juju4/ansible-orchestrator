@@ -5,6 +5,12 @@ install_archives: /var/_install
 orchestrator_pip:
   - ansigenome
 
+orchestrator_gem:
+  - serverspec
+  - ansible_spec
+  - inspec
+
+orchestrator_vagrant: true
 orchestrator_vagrant_url_deb: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
 orchestrator_vagrant_url_rpm: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.rpm
 orchestrator_vagrant_plugins:
