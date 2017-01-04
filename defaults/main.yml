@@ -5,14 +5,18 @@ install_archives: /var/_install
 orchestrator_pip:
   - ansigenome
 
+#orchestrator_gem: []
 orchestrator_gem:
   - serverspec
-  - ansible_spec
-  - inspec
+## gem below requires ruby2+ (nok on precise, centos6)
+#  - ansible_spec
+#  - inspec
 
 orchestrator_vagrant: true
-orchestrator_vagrant_url_deb: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
-orchestrator_vagrant_url_rpm: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.rpm
+orchestrator_vagrant_url_deb: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1_x86_64.deb
+orchestrator_vagrant_url_deb_hash: 'd006d6227e049725b64d8ba3967f0c82460a403ff40230515c93134d58723150'
+orchestrator_vagrant_url_rpm: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1_x86_64.rpm
+orchestrator_vagrant_url_rpm_hash: 'ee1d7e6b49d93df0e01412bc14700b9a13d0a2d98175e160321e4ff235f30422'
 orchestrator_vagrant_plugins:
   - vagrant-winrm
   - vagrant-scp
@@ -21,8 +25,10 @@ orchestrator_vagrant_plugins:
   - vagrant-vsphere
 
 ## ansible roles to replicate
+orchestrator_galaxy_roles: []
 #orchestrator_galaxy_roles:
 #  - { n: 'name', p: '/etc/ansible/roles/name' }
+orchestrator_github_roles: []
 #orchestrator_github_roles:
 #  - { url: 'https://github.com/geerlingguy/ansible-role-java', p: '/etc/ansible/roles/geerlingguy.java' }
 

@@ -12,7 +12,10 @@
   with_items: "{{ orchestrator_pkg }}"
 
 - name: Download vagrant
-  get_url: "url={{ orchestrator_vagrant_url_deb }} dest={{ install_archives }}/{{ orchestrator_vagrant_url_deb | basename }}"
+  get_url:
+    url: "{{ orchestrator_vagrant_url_deb }}"
+    dest: "{{ install_archives }}/{{ orchestrator_vagrant_url_deb | basename }}"
+    checksum: "{{ orchestrator_vagrant_url_deb_hash }}"
 - name: Install vagrant
   apt: "deb={{ install_archives }}/{{ orchestrator_vagrant_url_deb | basename }}"
 

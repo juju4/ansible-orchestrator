@@ -3,7 +3,6 @@
 orchestrator_pkg:
   - git
   - ansible
-  - ruby2.3-dev
   - zlib1g-dev
   - patch
   - make
