@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/juju4/ansible-orchestrator.svg?branch=master)](https://travis-ci.org/juju4/ansible-orchestrator)
+[![Build Status - Master](https://travis-ci.org/juju4/ansible-orchestrator.svg?branch=master)](https://travis-ci.org/juju4/ansible-orchestrator)
+[![Build Status - Devel](https://travis-ci.org/juju4/ansible-orchestrator.svg?branch=devel)](https://travis-ci.org/juju4/ansible-orchestrator/branches)
 # Orchestrator ansible role
 
 A simple ansible role to setup a dedicated host as an ansible/vagrant orchestrator.
@@ -11,6 +12,7 @@ It will install vagrant, ansible and some vagrant plugins
 ### Ansible
 It was tested on the following versions:
  * 2.0
+ * 2.2
 
 ### Operating systems
 
@@ -24,7 +26,7 @@ For example
 ```
 - host: all
   roles:
-    - orchestrator
+    - juju4.orchestrator
 ```
 
 ## Variables
@@ -34,16 +36,18 @@ Nothing specific for now.
 ## Continuous integration
 
 This role has a travis basic test (for github), more advanced with kitchen and also a Vagrantfile (test/vagrant).
+Default kitchen config (.kitchen.yml) is lxd-based, while (.kitchen.vagrant.yml) is vagrant/virtualbox based.
 
 Once you ensured all necessary roles are present, You can test with:
 ```
-$ cd /path/to/roles/orchestrator
+$ gem install kitchen-ansible kitchen-lxd_cli kitchen-sync kitchen-vagrant
+$ cd /path/to/roles/juju4.orchestrator
 $ kitchen verify
 $ kitchen login
 ```
 or
 ```
-$ cd /path/to/roles/orchestrator/test/vagrant
+$ cd /path/to/roles/juju4.orchestrator/test/vagrant
 $ vagrant up
 $ vagrant ssh
 ```
