@@ -45,7 +45,10 @@
 
 - block:
     - name: recover github ansible roles
-      git: repo={{ item.url }} dest={{ item.p }}
+      git:
+        repo: "{{ item.url }}"
+        dest: "{{ item.p }}"
+        update: yes
       with_items: "{{ orchestrator_github_roles }}"
   when: orchestrator_github_roles is defined and orchestrator_github_roles != []
 
