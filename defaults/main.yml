@@ -32,3 +32,4 @@ orchestrator_github_roles: []
 #orchestrator_github_roles:
 #  - { url: 'https://github.com/geerlingguy/ansible-role-java', p: '/etc/ansible/roles/geerlingguy.java' }
 
+orchestrator_rolesonly: false

@@ -1,8 +1,8 @@
 ## $ docker build -t orchestrator:0.1 .
 ## $ docker run -it orchestrator:0.1
 ## $ docker run -it --read-only --tmpfs /run --tmpfs /tmp --tmpfs /home/ansibleuser/.ansible -v ~/ansible:/home/ansibleuser/ansible:ro -v ~/ansibleroles:/etc/ansible/roles:rw orchestrator:0.1
-## $ docker run -it --tmpfs /run --tmpfs /tmp --tmpfs /home/ansibleuser/.ansible -v ~/ansible:/home/ansibleuser/ansible:ro -v ~/.ssh/keys:/home/ansibleuser/.ssh/keys -v ~/ansibleroles:/etc/ansible/roles:rw orchestrator:0.1
-##      > ansible-playbook -i inventory-everest -e TARGETIP=localhost -e ROLE=juju4.orchestrator -e orchestrator_rolesonly=true ~/ansible/run_role.yml
+## $ docker run -it --tmpfs /run --tmpfs /tmp --tmpfs /home/ansibleuser/.ansible -v ~/ansible:/home/ansibleuser/ansible:ro -v ~/.ssh/keys:/home/ansibleuser/.ssh/keys:ro orchestrator:0.1
+##      > ansible-playbook -i ~/ansible/hosts -e TARGETIP=localhost -e ROLE=juju4.orchestrator -e orchestrator_rolesonly=true ~/ansible/run_role.yml
 ## alternative: https://hub.docker.com/r/ansible/ansible/~/dockerfile/ (opensuse base)
 FROM ubuntu:16.04
 RUN apt-get update
