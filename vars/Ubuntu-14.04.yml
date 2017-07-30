@@ -8,6 +8,7 @@ orchestrator_pkg:
   - make
   - libssl-dev
   - libffi-dev
+  - libxml2-dev
 
 ruby_pkg: 
   - ruby2.0
