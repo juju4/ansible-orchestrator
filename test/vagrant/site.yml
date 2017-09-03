@@ -2,5 +2,5 @@
 
 - hosts: all
   roles:
-    - orchestrator
+    - juju4.orchestrator
 
