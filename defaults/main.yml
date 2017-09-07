@@ -14,7 +14,7 @@ orchestrator_gem: []
 
 orchestrator_vagrant: true
 orchestrator_vagrant_url_deb: https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.deb
-orchestrator_vagrant_url_deb_hash: 'sha256:d5579836c24d95c990aaa0fcd5c700b6a3cfac28d69229867e7cd614b7aecbdd '
+orchestrator_vagrant_url_deb_hash: 'sha256:d5579836c24d95c990aaa0fcd5c700b6a3cfac28d69229867e7cd614b7aecbdd'
 orchestrator_vagrant_url_rpm: https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.rpm
 orchestrator_vagrant_url_rpm_hash: 'sha256:0ee22a74afb6e8fd58908a05db4be7055e5bbf177b4c79ca681d768ef164282f'
 orchestrator_vagrant_plugins:
