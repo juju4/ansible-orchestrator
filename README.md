@@ -54,6 +54,9 @@ $ vagrant ssh
 
 ## Troubleshooting & Known issues
 
+* ```The conditional check 'not orchestrator_rolesonly' failed. The error was: cannot import name AnsibleVaultEncryptedUnicode```
+Seems to appear on Centos (travis/docker centos6, kitchen/lxd centos7).
+Python lib issue?
 
 ## License
 
