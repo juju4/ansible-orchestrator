@@ -13,10 +13,11 @@ It will install vagrant, ansible and some vagrant plugins
 It was tested on the following versions:
  * 2.0
  * 2.2
+ * 2.5
 
 ### Operating systems
 
-Tested with vagrant on Ubuntu 14.04, Kitchen test with trusty and centos7
+Tested on Ubuntu 14.04, 16.04, 18.04 and centos7
 
 ## Example Playbook
 

@@ -1,0 +1,16 @@
+---
+
+orchestrator_pkg:
+  - git
+  - ansible
+  - zlib1g-dev
+  - patch
+  - make
+  - libssl-dev
+  - libffi-dev
+  - libxml2-dev
+
+ruby_pkg: 
+  - ruby2.5
+  - ruby2.5-dev
+
