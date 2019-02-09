@@ -31,6 +31,6 @@ orchestrator_galaxy_roles: []
 #  - { n: 'name', p: '/etc/ansible/roles/name' }
 orchestrator_github_roles: []
 #orchestrator_github_roles:
-#  - { url: 'https://github.com/geerlingguy/ansible-role-java', p: '/etc/ansible/roles/geerlingguy.java' }
+#  - { url: 'https://github.com/geerlingguy/ansible-role-java', p: '/etc/ansible/roles/geerlingguy.java', v: 'HEAD' }
 
 orchestrator_rolesonly: false
