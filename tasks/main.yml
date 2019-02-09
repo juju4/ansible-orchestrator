@@ -17,4 +17,3 @@
       command: "ansible-galaxy install {{ item.n }} -p {{ item.p }}"
       with_items: "{{ orchestrator_galaxy_roles }}"
   when: orchestrator_galaxy_roles is defined and orchestrator_galaxy_roles != []
-

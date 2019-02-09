@@ -18,17 +18,21 @@
 
 - block:
     - name: install orchestrator pip modules
-      pip: name={{ item }} state=present
-      with_items: "{{ orchestrator_pip }}"
+      pip: name={{ orchestrator_pip }} state=present
+      register: pkg_result
+      until: pkg_result is success
   when: orchestrator_pip is defined and orchestrator_pip != []
 
 - block:
     - name: ensure ruby is installed
-      package: name={{ item }} state=present
-      with_items: "{{ ruby_pkg }}"
+      package: name={{ ruby_pkg }} state=present
+      register: pkg_result
+      until: pkg_result is success
     - name: install orchestrator gem modules
       gem: name={{ item }} state=present
       with_items: "{{ orchestrator_gem }}"
+      register: pkg_result
+      until: pkg_result is success
   when: orchestrator_gem is defined and orchestrator_gem != []
 
 - block:

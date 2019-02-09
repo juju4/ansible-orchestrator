@@ -13,4 +13,3 @@ orchestrator_pkg:
 ruby_pkg: 
   - ruby2.0
   - ruby2.0-dev
-
