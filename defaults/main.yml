@@ -13,10 +13,10 @@ orchestrator_gem: []
 #  - inspec
 
 orchestrator_vagrant: true
-orchestrator_vagrant_url_deb: https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
-orchestrator_vagrant_url_deb_hash: 'sha256:2b8392dfc02d161f674dde7ad08297e2831b233b14b6db6bb12ac12ae9d90f7f'
-orchestrator_vagrant_url_rpm: https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.rpm
-orchestrator_vagrant_url_rpm_hash: 'sha256:3bda785e80ddf184b7698f1593d4b95acda2830395a1b4ab2b08cd636c334fdd'
+orchestrator_vagrant_url_deb: https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
+orchestrator_vagrant_url_deb_hash: 'sha256:b5a522d29aee754df41901b227e2ca276bbfe435df6d91a11a54362a04a561da'
+orchestrator_vagrant_url_rpm: https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.rpm
+orchestrator_vagrant_url_rpm_hash: 'sha256:be06ce2fa17ad45cdb2fa3c92054194a48b49f46c26ecc2aa1ff928cf861090a'
 orchestrator_vagrant_plugins:
   - vagrant-winrm
   - vagrant-scp
