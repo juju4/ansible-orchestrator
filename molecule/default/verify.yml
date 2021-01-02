@@ -1,0 +1,12 @@
+---
+
+- name: Verify
+  hosts: o
+  tasks:
+  - name: Validate ansible
+    command: ansible --version  # noqa 303
+    changed_when: false
+    register: v1
+  - name: Validate ansible
+    assert:
+      that: v1.rc == 0
