@@ -10,6 +10,6 @@ orchestrator_pkg:
   - libffi-dev
   - libxml2-dev
 
-ruby_pkg: 
+ruby_pkg:
   - ruby2.5
   - ruby2.5-dev

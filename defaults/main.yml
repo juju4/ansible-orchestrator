@@ -6,11 +6,11 @@ orchestrator_pip:
   - ansigenome
 
 orchestrator_gem: []
-#orchestrator_gem:
 ## gem below requires ruby2+ (nok on precise, centos6)
-#  - serverspec
-#  - ansible_spec
-#  - inspec
+# orchestrator_gem:
+#   - serverspec
+#   - ansible_spec
+#   - inspec
 
 orchestrator_vagrant: true
 orchestrator_vagrant_url_deb: https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
@@ -27,10 +27,10 @@ orchestrator_vagrant_plugins:
 
 ## ansible roles to replicate
 orchestrator_galaxy_roles: []
-#orchestrator_galaxy_roles:
-#  - { n: 'name', p: '/etc/ansible/roles/name' }
+# orchestrator_galaxy_roles:
+#   - { n: 'name', p: '/etc/ansible/roles/name' }
 orchestrator_github_roles: []
-#orchestrator_github_roles:
-#  - { url: 'https://github.com/geerlingguy/ansible-role-java', p: '/etc/ansible/roles/geerlingguy.java', v: 'HEAD' }
+# orchestrator_github_roles:
+#   - { url: 'https://github.com/geerlingguy/ansible-role-java', p: '/etc/ansible/roles/geerlingguy.java', v: 'HEAD' }
 
 orchestrator_rolesonly: false

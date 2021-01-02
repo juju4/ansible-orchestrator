@@ -11,7 +11,7 @@ orchestrator_pkg:
   - libffi-dev
   - libxml2-dev
 
-ruby_pkg: 
+ruby_pkg:
   - ruby1.9.3
 ## ruby 1.8
 #  - ruby

@@ -5,8 +5,8 @@
   register: pkg_result
   until: pkg_result is success
 
-#- name: Debian | add ansible repository for latest releases
-#  apt_repository: repo='ppa:ansible/ansible'
+# - name: Debian | add ansible repository for latest releases
+#   apt_repository: repo='ppa:ansible/ansible'
 
 - name: Debian | orchestrator tools
   apt: name={{ orchestrator_pkg }} state=present update_cache=yes
