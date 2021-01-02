@@ -5,6 +5,10 @@ orchestrator_pkg:
   - ansible
   - gcc
   - make
+  - python36
+  - python36-devel
+  - python36-setuptools
+  - python3-pip
 
 ruby_pkg:
   - ruby

@@ -9,6 +9,7 @@ orchestrator_pkg:
   - libssl-dev
   - libffi-dev
   - libxml2-dev
+  - python3-setuptools
 
 ruby_pkg:
   - ruby2.5
