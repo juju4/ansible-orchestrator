@@ -18,7 +18,10 @@
 
 - block:
     - name: install orchestrator pip modules
-      pip: name={{ orchestrator_pip }} state=present
+      pip:
+        name: "{{ orchestrator_pip }}"
+        state: present
+        executable: "{{ orchestrator_bin_pip | default('pip3') }}"
       register: pkg_result
       until: pkg_result is success
   when: orchestrator_pip is defined and orchestrator_pip != []
