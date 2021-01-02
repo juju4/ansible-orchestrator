@@ -1,5 +1,9 @@
 [![Build Status - Master](https://travis-ci.org/juju4/ansible-orchestrator.svg?branch=master)](https://travis-ci.org/juju4/ansible-orchestrator)
 [![Build Status - Devel](https://travis-ci.org/juju4/ansible-orchestrator.svg?branch=devel)](https://travis-ci.org/juju4/ansible-orchestrator/branches)
+
+[![Actions Status - Master](https://github.com/juju4/ansible-orchestrator/workflows/AnsibleCI/badge.svg)](https://github.com/juju4/ansible-orchestrator/actions?query=branch%3Amaster)
+[![Actions Status - Devel](https://github.com/juju4/ansible-orchestrator/workflows/AnsibleCI/badge.svg?branch=devel)](https://github.com/juju4/ansible-orchestrator/actions?query=branch%3Adevel)
+
 # Orchestrator ansible role
 
 A simple ansible role to setup a dedicated host as an ansible/vagrant orchestrator.
