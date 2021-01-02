@@ -11,7 +11,16 @@
     dest: "{{ install_archives }}/{{ orchestrator_vagrant_url_rpm | basename }}"
     checksum: "{{ orchestrator_vagrant_url_rpm_hash }}"
 
+# https://www.hashicorp.com/security
+# - name: Import hashicorp gpg key
+#   rpm_key:
+#     state: present
+#     key: /path/file
+
 - name: Install vagrant
-  yum: "name={{ install_archives }}/{{ orchestrator_vagrant_url_rpm | basename }}"
+  yum:
+    name: "{{ install_archives }}/{{ orchestrator_vagrant_url_rpm | basename }}"
+    state: present
+    disable_gpg_check: "{{ orchestrator_yum_disable_gpg_check | default(omit) }}"
   register: pkg_result
   until: pkg_result is success
