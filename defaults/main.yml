@@ -3,7 +3,7 @@
 install_archives: /var/_install
 
 orchestrator_pip:
-  - ansigenome
+  - ansible
 
 orchestrator_gem: []
 ## gem below requires ruby2+ (nok on precise, centos6)
