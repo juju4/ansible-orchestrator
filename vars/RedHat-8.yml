@@ -5,6 +5,7 @@ orchestrator_pkg:
   # - ansible
   - gcc
   - make
+  - rust-toolset
 
 ruby_pkg:
   - ruby

@@ -11,6 +11,7 @@ orchestrator_pkg:
   - libxml2-dev
   - python3-pip
   - python3-setuptools
+  - rustc
 
 ruby_pkg:
   - ruby2.5

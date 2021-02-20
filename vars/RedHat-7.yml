@@ -9,6 +9,7 @@ orchestrator_pkg:
   - python36-devel
   - python36-setuptools
   - python3-pip
+  - rust-toolset
 
 ruby_pkg:
   - ruby

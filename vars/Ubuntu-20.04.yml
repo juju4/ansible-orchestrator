@@ -12,6 +12,7 @@ orchestrator_pkg:
   - libssl-dev
   - libffi-dev
   - libxml2-dev
+  - rustc
   - azure-cli
 
 ruby_pkg:
