@@ -165,6 +165,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/juju4.orchestrator
           sudo kitchen exec ${{ matrix.suite }}-${{ matrix.distribution }}-${{ matrix.version2 }} -c 'rpm -K /var/_install/*.rpm' || true
+          sudo kitchen exec ${{ matrix.suite }}-${{ matrix.distribution }}-${{ matrix.version2 }} -c 'rpm -qpi /var/_install/*.rpm' || true
           sudo kitchen exec ${{ matrix.suite }}-${{ matrix.distribution }}-${{ matrix.version2 }} -c 'rpm -q gpg-pubkey --qf "%{NAME}-%{VERSION}-%{RELEASE}\t%{SUMMARY}\n"' || true
         if: ${{ always() }}
         continue-on-error: true
