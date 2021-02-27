@@ -158,4 +158,10 @@ jobs:
         run: |
           sudo kitchen exec ${{ matrix.suite }}-${{ matrix.distribution }}-${{ matrix.version2 }} -c 'pip freeze'
           sudo kitchen exec ${{ matrix.suite }}-${{ matrix.distribution }}-${{ matrix.version2 }} -c 'pip3 freeze'
+        if: ${{ always() }}
+        continue-on-error: true
+      - name: After script - packages
+        run: |
+          sudo kitchen exec ${{ matrix.suite }}-${{ matrix.distribution }}-${{ matrix.version2 }} -c 'rpm -K /var/_install/*.rpm' || true
+        if: ${{ always() }}
         continue-on-error: true
