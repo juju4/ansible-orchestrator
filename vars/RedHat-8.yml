@@ -11,6 +11,3 @@ ruby_pkg:
   - ruby
   - rubygems
   - ruby-devel
-
-# FIXME: alternative?
-orchestrator_yum_disable_gpg_check: yes
