@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: orchestrator
   author: juju4
   description: set up an ansible orchestrator with given github or galaxy roles
   license: BSD
