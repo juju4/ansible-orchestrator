@@ -36,4 +36,3 @@ VOLUME /etc/ansible/roles
 VOLUME /home/ansibleuser/ansible
 
 ENTRYPOINT ["/bin/bash"]
-

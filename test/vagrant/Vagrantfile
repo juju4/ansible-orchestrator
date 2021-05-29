@@ -31,4 +31,3 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.synced_folder "/home/julien/script/homelab", "/home/vagrant/homelab"
     config.vm.provision "shell", inline: "ln -s /home/vagrant /home/julien"
 end
-

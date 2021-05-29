@@ -11,4 +11,3 @@ end
 describe file(ansible_path) do
   it { should be_executable }
 end
-
