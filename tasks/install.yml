@@ -44,7 +44,7 @@
       register: plugins
       changed_when: false
     - block:
-        - name: install vagrant plugins
+        - name: install vagrant plugins  # noqa no-changed-when
           command: "vagrant plugin install {{ item }}"
           with_items: "{{ orchestrator_vagrant_plugins }}"
       when: plugins.stdout.find("digitalocean") == -1
