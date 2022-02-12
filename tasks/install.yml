@@ -44,8 +44,10 @@
       register: plugins
       changed_when: false
     - block:
-        - name: install vagrant plugins  # noqa no-changed-when
+        - name: install vagrant plugins
           command: "vagrant plugin install {{ item }}"
+          args:
+            creates: "{{ ansible_env.HOME }}/.vagrant/plugins/path/TBD/{{ item }}"
           with_items: "{{ orchestrator_vagrant_plugins }}"
       when: plugins.stdout.find("digitalocean") == -1
   when: orchestrator_vagrant is defined and orchestrator_vagrant
