@@ -1,13 +1,13 @@
 ---
 
 - name: install archives directory
-  file: dest="{{ install_archives }}" mode=0755 state=directory
+  ansible.builtin.file: dest="{{ install_archives }}" mode=0755 state=directory
 
 - name: Include version-specific variables for Debian/Ubuntu.
-  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+  ansible.builtin.include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
   when: ansible_os_family == 'Debian'
 - name: Include version-specific variables for RedHat
-  include_vars: "RedHat-{{ ansible_distribution_version.split('.')[0] }}.yml"
+  ansible.builtin.include_vars: "RedHat-{{ ansible_distribution_version.split('.')[0] }}.yml"
   when: ansible_os_family == "RedHat"
 
 - import_tasks: debian.yml
@@ -18,7 +18,7 @@
 
 - block:
     - name: install orchestrator pip modules
-      pip:
+      ansible.builtin.pip:
         name: "{{ orchestrator_pip }}"
         state: present
         executable: "{{ orchestrator_bin_pip | default('pip3') }}"
@@ -28,7 +28,7 @@
 
 - block:
     - name: ensure ruby is installed
-      package: name={{ ruby_pkg }} state=present
+      ansible.builtin.package: name={{ ruby_pkg }} state=present
       register: pkg_result
       until: pkg_result is success
     - name: install orchestrator gem modules
@@ -40,12 +40,12 @@
 
 - block:
     - name: check existing vagrant plugins
-      command: "vagrant plugin list"
+      ansible.builtin.command: "vagrant plugin list"
       register: plugins
       changed_when: false
     - block:
         - name: install vagrant plugins
-          command: "vagrant plugin install {{ item }}"
+          ansible.builtin.command: "vagrant plugin install {{ item }}"
           args:
             creates: "{{ ansible_env.HOME }}/.vagrant/plugins/path/TBD/{{ item }}"
           with_items: "{{ orchestrator_vagrant_plugins }}"

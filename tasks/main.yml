@@ -5,7 +5,7 @@
 
 - block:
     - name: recover github ansible roles
-      git:
+      ansible.builtin.git:
         repo: "{{ item.url }}"
         dest: "{{ item.p }}"
         update: yes
@@ -15,7 +15,7 @@
 
 - block:
     - name: recover galaxy ansible roles
-      command: "ansible-galaxy install {{ item.n }} -p {{ item.p }}"
+      ansible.builtin.command: "ansible-galaxy install {{ item.n }} -p {{ item.p }}"
       args:
         creates: "{{ item.p }}"
       with_items: "{{ orchestrator_galaxy_roles }}"
