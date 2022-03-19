@@ -68,12 +68,6 @@ jobs:
           pwd
           env
           find -ls
-      - name: yamllint
-        run: |
-          cd $GITHUB_WORKSPACE/juju4.orchestrator && yamllint .
-      - name: ansible-lint
-        run: |
-          cd $GITHUB_WORKSPACE/juju4.orchestrator && ansible-lint
       - name: Install lxd requirements
         run: |
           sudo apt-get update -qq
