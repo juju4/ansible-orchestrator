@@ -16,7 +16,8 @@
 - import_tasks: redhat.yml
   when: ansible_os_family == "RedHat"
 
-- block:
+- name: pip
+  block:
     - name: install orchestrator pip modules
       ansible.builtin.pip:
         name: "{{ orchestrator_pip }}"
@@ -26,7 +27,8 @@
       until: pkg_result is success
   when: orchestrator_pip is defined and orchestrator_pip != []
 
-- block:
+- name: gem
+  block:
     - name: ensure ruby is installed
       ansible.builtin.package: name={{ ruby_pkg }} state=present
       register: pkg_result
@@ -38,12 +40,14 @@
       until: pkg_result is success
   when: orchestrator_gem is defined and orchestrator_gem != []
 
-- block:
+- name: vagrant
+  block:
     - name: check existing vagrant plugins
       ansible.builtin.command: "vagrant plugin list"
       register: plugins
       changed_when: false
-    - block:
+    - name: install
+      block:
         - name: install vagrant plugins
           ansible.builtin.command: "vagrant plugin install {{ item }}"
           args:
