@@ -34,7 +34,7 @@
       register: pkg_result
       until: pkg_result is success
     - name: install orchestrator gem modules
-      gem: name={{ item }} state=present
+      community.general.gem: name={{ item }} state=present
       with_items: "{{ orchestrator_gem }}"
       register: pkg_result
       until: pkg_result is success
