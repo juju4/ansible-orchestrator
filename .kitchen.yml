@@ -17,6 +17,7 @@ provisioner:
   # planned for deprecation per https://docs.chef.io/workstation/config_yml_kitchen/
   require_chef_omnibus: true
   require_chef_for_busser: true
+  require_ruby_for_busser: false
   chef_omnibus_url: https://omnitruck.chef.io/install.sh
   enable_yum_epel: true
   ansible_connection: ssh
