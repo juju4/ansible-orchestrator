@@ -4,7 +4,7 @@
   hosts: o
   tasks:
   - name: Validate ansible
-    ansible.builtin.command: ansible --version  # noqa 303
+    ansible.builtin.command: ansible --version  # noqa command-instead-of-module
     changed_when: false
     register: v1
   - name: Validate ansible

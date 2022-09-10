@@ -1,6 +1,6 @@
 ---
 
-- name: yum | orchestrator tools
+- name: Redhat | orchestrator tools
   ansible.builtin.yum: name={{ orchestrator_pkg }} state=present update_cache=yes
   register: pkg_result
   until: pkg_result is success
