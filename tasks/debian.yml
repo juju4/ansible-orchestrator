@@ -1,7 +1,10 @@
 ---
 
 - name: Debian | add software-properties-common
-  ansible.builtin.apt: name=software-properties-common state=present update_cache=yes
+  ansible.builtin.apt:
+    name: software-properties-common
+    state: present
+    update_cache: yes
   register: pkg_result
   until: pkg_result is success
 
@@ -9,7 +12,10 @@
 #   apt_repository: repo='ppa:ansible/ansible'
 
 - name: Debian | orchestrator tools
-  ansible.builtin.apt: name={{ orchestrator_pkg }} state=present update_cache=yes
+  ansible.builtin.apt:
+    name: "{{ orchestrator_pkg }}"
+    state: "present"
+    update_cache: "yes"
   register: pkg_result
   until: pkg_result is success
 
@@ -21,6 +27,7 @@
     mode: '0644'
 
 - name: Install vagrant
-  ansible.builtin.apt: "deb={{ install_archives }}/{{ orchestrator_vagrant_url_deb | basename }}"
+  ansible.builtin.apt:
+    deb: "{{ install_archives }}/{{ orchestrator_vagrant_url_deb | basename }}"
   register: pkg_result
   until: pkg_result is success

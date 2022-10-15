@@ -1,9 +1,11 @@
 ---
 
-- import_tasks: install.yml
+- name: Import install
+  ansible.builtin.import_tasks: install.yml
   when: not orchestrator_rolesonly
 
 - name: Github roles
+  when: orchestrator_github_roles is defined and orchestrator_github_roles != []
   block:
     - name: Recover github ansible roles
       ansible.builtin.git:
@@ -12,13 +14,12 @@
         update: yes
         version: "{{ item.v | default('HEAD') }}"
       with_items: "{{ orchestrator_github_roles }}"
-  when: orchestrator_github_roles is defined and orchestrator_github_roles != []
 
 - name: Galaxy roles
+  when: orchestrator_galaxy_roles is defined and orchestrator_galaxy_roles != []
   block:
     - name: Recover galaxy ansible roles
       ansible.builtin.command: "ansible-galaxy install {{ item.n }} -p {{ item.p }}"
       args:
         creates: "{{ item.p }}"
       with_items: "{{ orchestrator_galaxy_roles }}"
-  when: orchestrator_galaxy_roles is defined and orchestrator_galaxy_roles != []

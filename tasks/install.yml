@@ -1,7 +1,10 @@
 ---
 
 - name: Install archives directory
-  ansible.builtin.file: dest="{{ install_archives }}" mode=0755 state=directory
+  ansible.builtin.file:
+    dest: "{{ install_archives }}"
+    mode: 0755
+    state: directory
 
 - name: Include version-specific variables for Debian/Ubuntu.
   ansible.builtin.include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
@@ -10,13 +13,16 @@
   ansible.builtin.include_vars: "RedHat-{{ ansible_distribution_version.split('.')[0] }}.yml"
   when: ansible_os_family == "RedHat"
 
-- import_tasks: debian.yml
+- name: Import debian
+  ansible.builtin.import_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
-- import_tasks: redhat.yml
+- name: Import redhat
+  ansible.builtin.import_tasks: redhat.yml
   when: ansible_os_family == "RedHat"
 
 - name: Pip
+  when: orchestrator_pip is defined and orchestrator_pip != []
   block:
     - name: Install orchestrator pip modules
       ansible.builtin.pip:
@@ -25,33 +31,36 @@
         executable: "{{ orchestrator_bin_pip | default('pip3') }}"
       register: pkg_result
       until: pkg_result is success
-  when: orchestrator_pip is defined and orchestrator_pip != []
 
 - name: Gem
+  when: orchestrator_gem is defined and orchestrator_gem != []
   block:
     - name: Ensure ruby is installed
-      ansible.builtin.package: name={{ ruby_pkg }} state=present
+      ansible.builtin.package:
+        name: "{{ ruby_pkg }}"
+        state: "present"
       register: pkg_result
       until: pkg_result is success
     - name: Install orchestrator gem modules
-      community.general.gem: name={{ item }} state=present
+      community.general.gem:
+        name: "{{ item }}"
+        state: "present"
       with_items: "{{ orchestrator_gem }}"
       register: pkg_result
       until: pkg_result is success
-  when: orchestrator_gem is defined and orchestrator_gem != []
 
 - name: Vagrant
+  when: orchestrator_vagrant is defined and orchestrator_vagrant
   block:
     - name: Check existing vagrant plugins
       ansible.builtin.command: "vagrant plugin list"
       register: plugins
       changed_when: false
     - name: Install
+      when: plugins.stdout.find("digitalocean") == -1
       block:
         - name: Install vagrant plugins
           ansible.builtin.command: "vagrant plugin install {{ item }}"
           args:
             creates: "{{ ansible_env.HOME }}/.vagrant/plugins/path/TBD/{{ item }}"
           with_items: "{{ orchestrator_vagrant_plugins }}"
-      when: plugins.stdout.find("digitalocean") == -1
-  when: orchestrator_vagrant is defined and orchestrator_vagrant
