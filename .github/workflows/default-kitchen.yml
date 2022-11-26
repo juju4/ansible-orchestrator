@@ -75,10 +75,8 @@ jobs:
           find -ls
       - name: Install lxd requirements
         run: |
-          set -x
           sudo apt-get update -qq
-          sudo apt-get -y install acl dnsmasq-base zfsutils-linux -q
-          sudo snap install lxd
+          sudo apt-get -y install lxd acl dnsmasq-base zfsutils-linux -q
           whoami
           grep lxd /etc/group
           echo "# remote list"
