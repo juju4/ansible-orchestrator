@@ -3,10 +3,10 @@
 - name: Verify
   hosts: o
   tasks:
-  - name: Validate ansible
-    ansible.builtin.command: ansible --version  # noqa command-instead-of-module
-    changed_when: false
-    register: v1
-  - name: Validate ansible
-    ansible.builtin.assert:
-      that: v1.rc == 0
+    - name: Validate ansible
+      ansible.builtin.command: ansible --version  # noqa command-instead-of-module
+      changed_when: false
+      register: v1
+    - name: Validate ansible
+      ansible.builtin.assert:
+        that: v1.rc == 0
