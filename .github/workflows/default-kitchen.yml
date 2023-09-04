@@ -50,7 +50,7 @@ jobs:
       ANSIBLE_EXTRA_VARS: ""
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: juju4.orchestrator
       - name: Set up Python
