@@ -1,7 +1,7 @@
 ---
 
 - name: Redhat | orchestrator tools
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: "{{ orchestrator_pkg }}"
     state: "present"
     update_cache: "yes"
@@ -21,7 +21,7 @@
     key: https://rpm.releases.hashicorp.com/gpg
 
 - name: Install vagrant
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: "{{ install_archives }}/{{ orchestrator_vagrant_url_rpm | basename }}"
     state: present
     disable_gpg_check: "{{ orchestrator_yum_disable_gpg_check | default(omit) }}"
