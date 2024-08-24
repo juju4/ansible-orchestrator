@@ -24,6 +24,8 @@
 - name: Pip
   when: orchestrator_pip is defined and orchestrator_pip != []
   block:
+    - name: Import python-externally-managed
+      ansible.builtin.import_tasks: python-externally-managed.yml
     - name: Install orchestrator pip modules
       ansible.builtin.pip:
         name: "{{ orchestrator_pip }}"
