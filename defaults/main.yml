@@ -20,7 +20,6 @@ orchestrator_vagrant_url_rpm_hash: 'sha256:be06ce2fa17ad45cdb2fa3c92054194a48b49
 orchestrator_vagrant_plugins:
   - vagrant-winrm
   - vagrant-scp
-  - vagrant-digitalocean
   - vagrant-vsphere
 ## xmlrpc requires Ruby version >= 2.3
 #  - vagrant-aws
