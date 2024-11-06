@@ -11,6 +11,9 @@
 # - name: Debian | add ansible repository for latest releases
 #   apt_repository: repo='ppa:ansible/ansible'
 
+- name: Import microsoft for azure-cli
+  ansible.builtin.import_tasks: microsoft.yml
+
 - name: Debian | orchestrator tools
   ansible.builtin.apt:
     name: "{{ orchestrator_pkg }}"
