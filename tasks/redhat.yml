@@ -12,7 +12,7 @@
   ansible.builtin.get_url:
     url: "{{ orchestrator_vagrant_url_rpm }}"
     dest: "{{ install_archives }}/{{ orchestrator_vagrant_url_rpm | basename }}"
-    checksum: "{{ orchestrator_vagrant_url_rpm_hash }}"
+    checksum: "{{ orchestrator_vagrant_url_rpm_hash | default(omit) }}"
     mode: '0644'
 
 - name: Import hashicorp gpg key

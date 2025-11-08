@@ -26,7 +26,7 @@
   ansible.builtin.get_url:
     url: "{{ orchestrator_vagrant_url_deb }}"
     dest: "{{ install_archives }}/{{ orchestrator_vagrant_url_deb | basename }}"
-    checksum: "{{ orchestrator_vagrant_url_deb_hash }}"
+    checksum: "{{ orchestrator_vagrant_url_deb_hash | default(omit) }}"
     mode: '0644'
 
 - name: Install vagrant
