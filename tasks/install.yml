@@ -64,5 +64,5 @@
         - name: Install vagrant plugins
           ansible.builtin.command: "vagrant plugin install {{ item }}"
           args:
-            creates: "{{ ansible_env.HOME }}/.vagrant/plugins/path/TBD/{{ item }}"
+            creates: "{{ ansible_facts.env.HOME }}/.vagrant/plugins/path/TBD/{{ item }}"
           with_items: "{{ orchestrator_vagrant_plugins }}"
