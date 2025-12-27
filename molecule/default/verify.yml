@@ -3,7 +3,7 @@
 - name: Verify
   hosts: o
   tasks:
-    - name: Validate ansible
+    - name: Get ansible version
       ansible.builtin.command: ansible --version  # noqa command-instead-of-module
       changed_when: false
       register: v1
