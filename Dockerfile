@@ -4,7 +4,7 @@
 ## $ docker run -it --tmpfs /run --tmpfs /tmp --tmpfs /home/ansibleuser/.ansible -v ~/ansible:/home/ansibleuser/ansible:ro -v ~/.ssh/keys:/home/ansibleuser/.ssh/keys:ro orchestrator:0.1
 ##      > ansible-playbook -i ~/ansible/hosts -e TARGETIP=localhost -e ROLE=juju4.orchestrator -e orchestrator_rolesonly=true -c local ~/ansible/run_role.yml
 ## alternative: https://hub.docker.com/r/ansible/ansible/~/dockerfile/ (opensuse base)
-FROM ubuntu:24.04@sha256:c35e29c9450151419d9448b0fd75374fec4fff364a27f176fb458d472dfc9e54
+FROM ubuntu:26.04@sha256:5e275723f82c67e387ba9e3c24baa0abdcb268917f276a0561c97bef9450d0b4
 RUN apt-get update
 
 # Install Ansible
