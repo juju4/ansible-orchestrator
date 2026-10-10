@@ -1,7 +1,7 @@
-[![Actions Status - Master](https://github.com/juju4/ansible-orchestrator/workflows/AnsibleCI/badge.svg)](https://github.com/juju4/ansible-orchestrator/actions?query=branch%3Amaster)
-[![Actions Status - Devel](https://github.com/juju4/ansible-orchestrator/workflows/AnsibleCI/badge.svg?branch=devel)](https://github.com/juju4/ansible-orchestrator/actions?query=branch%3Adevel)
-
 # Orchestrator ansible role
+
+[![Actions Status - Main](https://github.com/juju4/ansible-orchestrator/workflows/AnsibleCI/badge.svg)](https://github.com/juju4/ansible-orchestrator/actions?query=branch%3Amain)
+[![Actions Status - Devel](https://github.com/juju4/ansible-orchestrator/workflows/AnsibleCI/badge.svg?branch=devel)](https://github.com/juju4/ansible-orchestrator/actions?query=branch%3Adevel)
 
 A simple ansible role to setup a dedicated host as an ansible/vagrant orchestrator.
 As it is inside a "guest", it's more fit to manage remote/cloud instance (digitalocean, aws, vsphere...) than a local one (virtualbox, libvirt...)
