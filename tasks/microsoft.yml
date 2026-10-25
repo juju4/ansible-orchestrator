@@ -1,18 +1,84 @@
 ---
 # https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux
 
-- name: Add Microsoft Apt signing key
-  ansible.builtin.apt_key:
-    url: https://packages.microsoft.com/keys/microsoft.asc
+- name: Ensure dependencies are present
+  ansible.builtin.package:
+    name: gpg
     state: present
 
-- name: Ensure Microsoft Azure repository is present
-  ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_facts['distribution_release'] | lower }} main"
-    filename: azure-cli
-    state: present
-  notify:
-    - Update apt cache
+- name: Debian
+  when: ansible_facts['os_family'] == 'Debian'
+  block:
+    - name: Debian | Set fact
+      ansible.builtin.set_fact:
+        pkg_url: "https://packages.microsoft.com/config/debian/{{ ansible_facts['distribution_major_version'] }}/packages-microsoft-prod.deb"
+    - name: Ubuntu | Set fact
+      ansible.builtin.set_fact:
+        pkg_url: "https://packages.microsoft.com/config/ubuntu/{{ ansible_facts['distribution_version'] }}/packages-microsoft-prod.deb"
+      when:
+        - ansible_facts['distribution'] == "Ubuntu"
 
-- name: Flush handlers
-  ansible.builtin.meta: flush_handlers
+    - name: Debian | Get packages-microsoft-prod.deb
+      ansible.builtin.get_url:
+        url: "{{ pkg_url }}"
+        dest: "/tmp/{{ pkg_url | basename }}"
+        mode: '0600'
+      environment: "{{ proxy_env | default(omit) }}"
+
+    - name: Debian | Install Microsoft prod packages
+      ansible.builtin.apt:
+        deb: "/tmp/{{ pkg_url | basename }}"
+        state: present
+      notify:
+        - Refresh apt cache
+      when:
+        - ansible_facts.packages['packages-microsoft-prod'] is not defined
+
+    - name: Debian | adding apt preferences for Microsoft prod packages
+      ansible.builtin.copy:
+        content: |
+          Package: *
+          Pin: origin "packages.microsoft.com"
+          Pin-Priority: 1001
+        dest: /etc/apt/preferences.d/99microsoft.pref
+        mode: '0644'
+      when: sysmon_build
+
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
+
+    - name: Debian | Check apt sources.d
+      ansible.builtin.command:
+        cmd: ls /etc/apt/sources.list.d
+      changed_when: false
+      failed_when: false
+
+- name: RedHat
+  when: ansible_facts['os_family'] == 'RedHat'
+  block:
+    - name: RedHat | adding Microsoft packages signing key
+      ansible.builtin.rpm_key:
+        key: https://packages.microsoft.com/keys/microsoft.asc
+        state: present
+      register: dl_result
+      until: dl_result is success
+
+    - name: RedHat | adding Microsoft prod packages repository
+      ansible.builtin.package:
+        name: "https://packages.microsoft.com/config/rhel/{{ ansible_facts['distribution_major_version'] }}/packages-microsoft-prod.rpm"
+        state: present
+      when:
+        - ansible_facts['os_family'] == 'RedHat'
+        - ansible_facts['distribution'] != 'Fedora'
+
+    - name: Fedora | adding Microsoft prod packages repository
+      ansible.builtin.package:
+        name: "https://packages.microsoft.com/config/fedora/{{ ansible_facts['distribution_major_version'] }}/packages-microsoft-prod.rpm"
+        state: present
+      when: ansible_facts['distribution'] == 'Fedora'
+
+    - name: RedHat | Check /etc/yum.repos.d
+      ansible.builtin.command:
+        cmd: ls /etc/yum.repos.d
+      changed_when: false
+      failed_when: false
