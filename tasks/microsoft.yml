@@ -34,16 +34,6 @@
       when:
         - ansible_facts.packages['packages-microsoft-prod'] is not defined
 
-    - name: Debian | adding apt preferences for Microsoft prod packages
-      ansible.builtin.copy:
-        content: |
-          Package: *
-          Pin: origin "packages.microsoft.com"
-          Pin-Priority: 1001
-        dest: /etc/apt/preferences.d/99microsoft.pref
-        mode: '0644'
-      when: sysmon_build
-
     - name: Flush handlers
       ansible.builtin.meta: flush_handlers
 
