@@ -1,0 +1,20 @@
+---
+
+orchestrator_pkg:
+  - git
+  - python3
+  - python3-pip
+  - python3-setuptools
+  # - ansible
+  - zlib1g-dev
+  - patch
+  - make
+  - libssl-dev
+  - libffi-dev
+  - libxml2-dev
+  - rustc
+  - azure-cli
+
+ruby_pkg:
+  - ruby
+  - ruby-dev
